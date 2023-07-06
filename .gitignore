@@ -1,0 +1,5 @@
+.nvenv/
+.vscode/
+node_modules/
+src/*.js
+comuni.msp
