@@ -18,9 +18,19 @@ const errorResponse = (err: any, res: any, contentType: any) => {
     );
 }
 
+// cors template
+const allowCors = (res: any) => {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Headers', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'OPTIONS, GET');
+    res.setHeader('Access-Control-Max-Age', 2592000); // 30 days
+}
+
 
 // handle requests
 export const server = http.createServer((req, res) => {
+
+    allowCors(res)
 
     const url = new URL(req?.url || '', `http://${req.headers.host}`);
     const params = url.searchParams;

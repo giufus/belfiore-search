@@ -35,7 +35,7 @@ source .nvenv/bin/activate
 6. start the ingestion of documents from the CSV into the db with `node src/setup.js`
 7. once completed (the operation lasts 4 min circa), the database is persisted into `./comuni.msp`  
 8. now you can run a local http server and perform full-text searches running `node src/server.js`  (`--inspect` if you want debug ON)  
-
+9. ACHTUNG! CORS is not enforced :)
 
 ## Samples
 
