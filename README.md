@@ -9,7 +9,7 @@
 |_.__/  \___||_||_|  |_| \___/ |_|    \___|   |___/ \___| \__,_||_|    \___||_| |_|
 ```
 
-This project is a test case, aimed at the ingestion of a set of records from a CSV into a modern lightweight full-text search engine, Orama, in order to evaluate its performance and perform useful searches at the same time.
+This project is aimed at the ingestion of a set of records from a CSV into a modern lightweight full-text search engine, Orama, in order to evaluate its performance and perform useful searches at the same time.
 
 ## Introduction  
 Every Italian citizen has a unique ID, called FISCAL CODE. It is often used for fiscal / health insurance purposes. This code is generated through an [algorithm](https://www.agenziaentrate.gov.it/portale/web/guest/schede/istanze/richiesta-ts_cf/informazioni-codificazione-pf). Apart from your personal details, the algorithm requires an external CODE (commonly called [Belfiore](https://it.wikipedia.org/wiki/Codice_catastale) code) that will be part of the suffix of the final algorithm's output.  
