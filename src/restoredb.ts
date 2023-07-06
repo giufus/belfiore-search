@@ -2,9 +2,7 @@ import { Orama, Schema, search } from '@orama/orama'
 import { restoreFromFile } from '@orama/plugin-data-persistence/server'
 import { DB_PATH, Comune, interval } from './commons.js';
 
-
-
-
+// restore db from file system
 export const restoreDb = async (): Promise<Orama<Schema>> => {
 
     const start = new Date()
@@ -13,7 +11,7 @@ export const restoreDb = async (): Promise<Orama<Schema>> => {
 
     console.log(`Restoring db...`)
     const db = await restoreFromFile('binary', DB_PATH)
-    console.log(`Restored after ${interval(start, new Date())}`)
+    console.log(`DB restored after ${interval(start, new Date())}`)
 
     return db
 };

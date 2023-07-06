@@ -66,7 +66,7 @@ source .nvenv/bin/activate
 }
 ```
 
-### GET `http://localhost:3000/?DENOMINAZIONE_IT=ARICC&SIGLAPROVINCIA=RM`  
+### GET `http://localhost:3000?DENOMINAZIONE_IT=ARICC&SIGLAPROVINCIA=RM`  
 ```json
 {
   "elapsed": {
@@ -108,6 +108,6 @@ source .nvenv/bin/activate
 ## TODO
 - add details about CF algorithm  
 - use remote csv file while ingesting, fallback to local if it fails
-- unit test (find the right lib)
+- unit test (find the _right_ lib)
 - add CI/CD (and hopefully a free hosting service)
-- dockerize
+- dockerize it  
