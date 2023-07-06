@@ -106,6 +106,7 @@ source .nvenv/bin/activate
 ```
 
 ## TODO
+- add details about CF algorithm  
 - use remote csv file while ingesting, fallback to local if it fails
 - unit test (find the right lib)
 - add CI/CD (and hopefully a free hosting service)
