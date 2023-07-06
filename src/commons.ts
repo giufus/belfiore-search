@@ -24,19 +24,23 @@ export type Comune = {
     "COD_DENOM": string
 }
 
+export const timeString = (date: Date): string => {
+    return `${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}:${date.getMilliseconds()}`
+}
+
 export const interval = (startDate: Date, nextDate: Date) => {
     let diff = Math.abs(nextDate.getTime() - startDate.getTime());
     let ms = diff;
     let num = ms / 1000;
     let seconds = Math.floor(num % 60);
-    num = Math.floor(num / 60);   
+    num = Math.floor(num / 60);
     let minutes = num % 60;
     num = Math.floor(num / 60);
     let hours = num % 24;
     return JSON.stringify({
-        ms, 
-        seconds, 
-        minutes, 
+        ms,
+        seconds,
+        minutes,
         hours
     })
 }
