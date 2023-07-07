@@ -135,6 +135,7 @@ If you search a city by its name, using the param `DENOMINAZIONE_IT` for example
 
 
 ## To do
+- implementation of a performance test  
 - add details about CF algorithm  
 - use remote csv file while ingesting, fallback to local if it fails
 - unit test (find the _right_ lib)
