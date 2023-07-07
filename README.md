@@ -23,7 +23,7 @@ The project uses:
 
 ## Setup of the project  
 1. I like to use [nodeenv](https://github.com/ekalinin/nodeenv) to manage my node.js projects, so:
-2. Create and activate a node.js virtual env with the LTS version of node.js:  
+2. Create and activate a node.js virtual env with the LTS version of node.js (currently `node:18.16.1`):  
 ```bash
 cd belfiore-search  
 nodeenv  -n lts .nvenv  
@@ -103,10 +103,18 @@ source .nvenv/bin/activate
   "count": 401
 }
 ```
+## Dockerizing
+
+### Build image  
+`docker build . -t belfiore-search-docker`  
+
+### Run container  
+`docker run -p 3000:3000 -d belfiore-search-docker:latest`  
+
+
 
 ## To do
 - add details about CF algorithm  
 - use remote csv file while ingesting, fallback to local if it fails
 - unit test (find the _right_ lib)
 - add CI/CD (and hopefully a free hosting service)
-- dockerize it  

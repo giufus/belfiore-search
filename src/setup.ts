@@ -17,11 +17,11 @@ const setupDb = async () => {
     const fileContent = fs.readFileSync(csvFilePath, { encoding: 'utf-8' });
     const headers: string[] = fileContent.substring(0, fileContent.indexOf('\n')).split(',')
         .map((h) => h.replace(/\"/g, '').replace(/\r/g, ''))
-    console.log(headers)
+    //console.log(headers)
     const schemaStub = headers.reduce((accumulator, value) => {
         return { ...accumulator, [value]: 'string' };
     }, {});
-    console.log(schemaStub)
+    //console.log(schemaStub)
 
     parse(fileContent, {
         delimiter: ',',
