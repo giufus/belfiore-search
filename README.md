@@ -13,7 +13,7 @@ This project is aimed at the ingestion of a set of records from a CSV into a mod
 
 ## Introduction  
 Every Italian citizen has a unique ID, called FISCAL CODE. It is often used for fiscal / health insurance purposes. This code is generated through an [algorithm](https://www.agenziaentrate.gov.it/portale/web/guest/schede/istanze/richiesta-ts_cf/informazioni-codificazione-pf). Apart from your personal details, the algorithm requires an external CODE (commonly called [Belfiore](https://it.wikipedia.org/wiki/Codice_catastale) code) that will be part of the suffix of the final algorithm's output.  
-Every city in Italy has its code and you can get the updated list at this [url](https://www.anagrafenazionale.interno.it/wp-content/uploads/ANPR_archivio_comuni.csv). As a user, you can easily remind the name of the city where you were born, but not the code. This API is for instant real-time search and retrieval of the code, starting from substrings of a city name, province, etc.
+Every city in Italy has its code and you can get the updated list at this [url](https://www.anagrafenazionale.interno.it/wp-content/uploads/ANPR_archivio_comuni.csv). As a user, you can easily remember the name of the city where you were born, but not the code. This API is for instant real-time search and retrieval of the code, starting from substrings of a city name, province, etc.
 
 
 The project uses:  
@@ -23,19 +23,18 @@ The project uses:
 
 ## Setup of the project  
 1. I like to use [nodeenv](https://github.com/ekalinin/nodeenv) to manage my node.js projects, so:
-2. Create and activate a node virtual env with the LTS version of node inside of the repo:
+2. Create and activate a node.js virtual env with the LTS version of node.js:  
 ```bash
 cd belfiore-search  
 nodeenv  -n lts .nvenv  
 source .nvenv/bin/activate  
 ```
-3. `npm install` to install dependencies locally 
-4. not needed, because it is already in the repo, but just as a reminder: `npx tsc --init` to initialize typescript configuration  
-5. `npx tsc` to compile typescript into js  
-6. start the ingestion of documents from the CSV into the db with `node src/setup.js`
-7. once completed (the operation lasts 4 min circa), the database is persisted into `./comuni.msp`  
-8. now you can run a local http server and perform full-text searches running `node src/server.js`  (`--inspect` if you want debug ON)  
-9. ACHTUNG! CORS is not enforced :)
+3. `npm install` to install dependencies locally   
+4. `npx tsc` to compile typescript into js  
+5. start the ingestion of documents from the CSV into the db with `node src/setup.js`
+6. once completed (the operation lasts approx 4 mins), the database is persisted in `./comuni.msp`  
+7. now you can run a local http server and perform full-text searches running `node src/server.js`  (`--inspect` if you want debug ON)  
+8. WARNING! `CORS` is deliberately not enforced :)  
 
 ## Samples
 
@@ -105,7 +104,7 @@ source .nvenv/bin/activate
 }
 ```
 
-## TODO
+## To do
 - add details about CF algorithm  
 - use remote csv file while ingesting, fallback to local if it fails
 - unit test (find the _right_ lib)
