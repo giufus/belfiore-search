@@ -17,8 +17,7 @@ This project is aimed at the ingestion of a set of records from a CSV into a mod
 
 ## Introduction  
 Every Italian citizen has a unique ID, called FISCAL CODE. It is often used for fiscal / health insurance purposes. This code is generated through an [algorithm](https://www.agenziaentrate.gov.it/portale/web/guest/schede/istanze/richiesta-ts_cf/informazioni-codificazione-pf). Apart from your personal details, the algorithm requires an external CODE (commonly called [Belfiore](https://it.wikipedia.org/wiki/Codice_catastale) code) that will be part of the suffix of the final algorithm's output.  
-Every city in Italy has its code and you can get the updated list at this [url](https://www.anagrafenazionale.interno.it/wp-content/uploads/ANPR_archivio_comuni.csv). As a user, you can easily remember the name of the city where you were born, but not the code. This API is for instant real-time search and retrieval of the _Belfiore_ code (even if you get much more, as the entire archive of cities of Italy is ingested), starting from substrings of a city name, province, etc.
-
+Every city in Italy has its code and you can get the updated list at this [url](https://www.anagrafenazionale.interno.it/wp-content/uploads/ANPR_archivio_comuni.csv). As a user, you can easily remember the name of the city where you were born, but not the code. This API is for instant real-time search and retrieval of the _Belfiore_ code (even if you get much more, as the entire archive of cities of Italy is ingested), starting from substrings of a city name, province, etc. 
 
 The project uses:  
 - node.js
@@ -107,6 +106,24 @@ source .nvenv/bin/activate
   "count": 401
 }
 ```
+
+## A curiosity
+If you search a city by its name, using the param `DENOMINAZIONE_IT` for example, you may obtain an _"historycal view of the city"_, as can exist similar documents with different intervals, in the past:  
+
+```json  
+...  
+  "DATAISTITUZIONE": "1871-01-15",  
+  "DATACESSAZIONE": "1935-03-06",  
+...  
+```
+ or not (`DATACESSAZIONE` is in the future, so the document represents the current state of the city):   
+```json  
+...  
+  "DATAISTITUZIONE": "1937-10-26",
+  "DATACESSAZIONE": "9999-12-31", 
+...  
+```
+
 ## Dockerizing
 
 ### Build image  
