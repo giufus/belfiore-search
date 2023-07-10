@@ -3,4 +3,6 @@
 node_modules/
 src/*.js
 src/*.js.map
+tests/*.js.map
+vitest.config.js.map
 comuni.msp
