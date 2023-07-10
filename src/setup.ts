@@ -13,11 +13,13 @@ const setupDb = async () => {
     console.log(`Started @ ${timeString(start)}`)
 
     const csvFilePath = path.resolve(CSV_FILE_NAME);
-    //const headers = ["ID", "DATAISTITUZIONE", "DATACESSAZIONE", "CODISTAT", "CODCATASTALE", "DENOMINAZIONE_IT", "DENOMTRASLITTERATA", "ALTRADENOMINAZIONE", "ALTRADENOMTRASLITTERATA", "ID_PROVINCIA", "IDPROVINCIAISTAT", "IDREGIONE", "IDPREFETTURA", "STATO", "SIGLAPROVINCIA", "FONTE", "DATAULTIMOAGG", "COD_DENOM"];
     const fileContent = fs.readFileSync(csvFilePath, { encoding: 'utf-8' });
+    
+    //const headers = ["ID", "DATAISTITUZIONE", "DATACESSAZIONE", "CODISTAT", "CODCATASTALE", "DENOMINAZIONE_IT", "DENOMTRASLITTERATA", "ALTRADENOMINAZIONE", "ALTRADENOMTRASLITTERATA", "ID_PROVINCIA", "IDPROVINCIAISTAT", "IDREGIONE", "IDPREFETTURA", "STATO", "SIGLAPROVINCIA", "FONTE", "DATAULTIMOAGG", "COD_DENOM"];
     const headers: string[] = fileContent.substring(0, fileContent.indexOf('\n')).split(',')
         .map((h) => h.replace(/\"/g, '').replace(/\r/g, ''))
     //console.log(headers)
+    
     const schemaStub = headers.reduce((accumulator, value) => {
         return { ...accumulator, [value]: 'string' };
     }, {});

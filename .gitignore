@@ -2,7 +2,7 @@
 .vscode/
 node_modules/
 src/*.js
-src/*.js.map
-tests/*.js.map
-vitest.config.js.map
+tests/*.js
+*.js.map
 comuni.msp
+dist/

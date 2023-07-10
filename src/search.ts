@@ -4,7 +4,6 @@ import { DB_PATH, Comune, interval, timeString } from './commons.js';
 import { URLSearchParams } from 'url';
 
 
-
 // search document
 export const searchDoc = async (schema: Promise<Orama<Schema>>, searchParams?: URLSearchParams): Promise<Results<Result[]>> => {
 
@@ -17,7 +16,8 @@ export const searchDoc = async (schema: Promise<Orama<Schema>>, searchParams?: U
 
     console.log(`Searching comuni...`)
 
-    const searchResult = await search(await schema, { term, properties })
+    const db = await schema; 
+    const searchResult = await search(db, { term, properties })
 
     console.log(`Responding after ${interval(start, new Date())}`)
 

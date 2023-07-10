@@ -3,11 +3,16 @@ import { searchDoc } from '../src/search.js'
 import { URLSearchParams } from 'url';
 import { Orama, Schema, search } from '@orama/orama';
 
+
+
 describe('search tests', () => {
 
+    afterEach(() => {
+        vi.restoreAllMocks()
+    })
 
     vi.mock('@orama/orama', () => ({
-        search: vi.fn().mockReturnValue({
+        search: vi.fn().mockResolvedValue(Promise.resolve({
             "elapsed": {
                 "raw": 8545459,
                 "formatted": "8ms"
@@ -39,18 +44,22 @@ describe('search tests', () => {
                 }
             ],
             "count": 401
-        })
+        }))
     }))
 
     it('search a city OK', async () => {
 
         const params = new URL('http://localhost:3000?DENOMINAZIONE_IT=ARICC&SIGLAPROVINCIA=RM').searchParams
-        const db = new Promise(() => { }) as Promise<Orama<Schema>>;
+        const db = Promise.resolve({}) as Promise<Orama<Schema>>;
+        // same as const db2 = new Promise((resolve, reject) => resolve({} as Orama<Schema>) );
 
         const result = await searchDoc(db, params);
 
-        expect(result.count).toEqual(401)
-
+        expect(result.hits).toBeTruthy()
+        expect(result.hits).toHaveLength(1)
+        expect(result.hits[0].document.CODCATASTALE).toStrictEqual("A401")
+        expect(search).toHaveBeenCalledOnce()
+        expect(search).toHaveBeenCalledWith(await db, {term: expect.anything(), properties: expect.anything()})
     })
 
 });
