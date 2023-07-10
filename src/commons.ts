@@ -3,6 +3,28 @@ export const ARCHIVE_CSV: String = 'https://www.anagrafenazionale.interno.it/wp-
 export const CSV_FILE_NAME = 'ANPR_archivio_comuni.csv'
 export const DB_PATH = './comuni.msp'
 
+export const COMUNE_PROPS = [
+    "ID",
+    "DATAISTITUZIONE",
+    "DATACESSAZIONE",
+    "CODISTAT",
+    "CODCATASTALE",
+    "DENOMINAZIONE_IT",
+    "DENOMTRASLITTERATA",
+    "ALTRADENOMINAZIONE",
+    "ALTRADENOMTRASLITTERATA",
+    "ID_PROVINCIA",
+    "IDPROVINCIAISTAT",
+    "IDREGIONE",
+    "IDPREFETTURA",
+    "STATO",
+    "SIGLAPROVINCIA",
+    "FONTE",
+    "DATAULTIMOAGG",
+    "COD_DENOM"
+]
+
+//TODO: find a way to map the above list to this type  
 export type Comune = {
     "ID": string
     "DATAISTITUZIONE": string

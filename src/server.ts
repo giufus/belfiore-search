@@ -1,7 +1,7 @@
 import http from "http";
 import { restoreDb } from "./restoredb.js";
-import * as url from 'url'
-import { searchDoc, desc } from './search.js'
+import { desc, searchDoc } from './search.js';
+import { COMUNE_PROPS } from "./commons.js";
 
 
 // restore DB from file
@@ -15,6 +15,10 @@ const errorResponse = (err: any, res: any, contentType: any) => {
     res.end(
         JSON.stringify(err)
     );
+}
+
+const validateParams = (params: URLSearchParams): boolean => {
+    return Array.from(params.keys()).every(item => COMUNE_PROPS.includes(item))
 }
 
 // cors template
@@ -35,7 +39,7 @@ export const server = http.createServer(async (req, res) => {
     const params = url.searchParams;
     const contentTypeJson = { "Content-Type": "application/json" };
 
-    if (params && params.size > 0) {
+    if (params && params.size > 0 && validateParams(params)) {
         let searchRes = await searchDoc(db, params)
         res.writeHead(200, contentTypeJson);
                 res.end(

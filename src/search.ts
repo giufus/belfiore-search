@@ -1,7 +1,6 @@
-import { Result, Results, search, Orama, Schema } from '@orama/orama';
-import { restoreFromFile } from '@orama/plugin-data-persistence/server'
-import { DB_PATH, Comune, interval, timeString } from './commons.js';
+import { Orama, Result, Results, Schema, search } from '@orama/orama';
 import { URLSearchParams } from 'url';
+import { interval, timeString } from './commons.js';
 
 
 // search document
