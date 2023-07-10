@@ -2,7 +2,6 @@ import http from "http";
 import { restoreDb } from "./restoredb.js";
 import * as url from 'url'
 import { searchDoc, desc } from './search.js'
-import { OpaqueDocumentStore } from "@orama/orama";
 
 
 // restore DB from file
@@ -28,7 +27,7 @@ const allowCors = (res: any) => {
 
 
 // handle requests
-export const server = http.createServer((req, res) => {
+export const server = http.createServer(async (req, res) => {
 
     allowCors(res)
 
@@ -37,30 +36,21 @@ export const server = http.createServer((req, res) => {
     const contentTypeJson = { "Content-Type": "application/json" };
 
     if (params && params.size > 0) {
-        let searchRes = searchDoc(db, params)
-            .then((docs) => {
-                res.writeHead(200, contentTypeJson);
+        let searchRes = await searchDoc(db, params)
+        res.writeHead(200, contentTypeJson);
                 res.end(
-                    JSON.stringify(docs, null, 2)
+                    JSON.stringify(searchRes, null, 2)
                 );
-            })
-            .catch((err) => {
-                errorResponse(err, res, contentTypeJson)
-            })
+            
     } else {
-        let description = desc(db)
-            .then((keys: string[]) => {
-                res.writeHead(200, contentTypeJson);
-                res.end(
-                    JSON.stringify({
-                        message: 'You need to pass 1..N of the following params',
-                        params: keys,
-                    }, null, 2)
-                );
-            })
-            .catch((err) => {
-                errorResponse(err, res, contentTypeJson)
-            })
+        let description = await desc(db)
+        res.writeHead(200, contentTypeJson);
+        res.end(
+            JSON.stringify({
+                message: 'You need to pass 1..N of the following params',
+                params: description,
+            }, null, 2)
+        );
     }
 
 });

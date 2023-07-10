@@ -10,7 +10,8 @@ COPY . .
 
 EXPOSE 3000
 
-RUN npx tsc
-RUN node src/setup.js
+RUN npm run build
+RUN npm run vitest
+RUN npm run setup
 
-CMD [ "node", "src/server.js" ]
+CMD [ "npm", "run", "start" ]

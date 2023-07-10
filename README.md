@@ -32,12 +32,19 @@ cd belfiore-search
 nodeenv  -n lts .nvenv  
 source .nvenv/bin/activate  
 ```
-3. `npm install` to install dependencies locally   
-4. `npx tsc` to compile typescript into js  
-5. start the ingestion of documents from the CSV into the db with `node src/setup.js`
-6. once completed (the operation lasts approx 4 mins), the database is persisted in `./comuni.msp`  
-7. now you can run a local http server and perform full-text searches running `node src/server.js`  (`--inspect` if you want debug ON)  
-8. WARNING! `CORS` is deliberately not enforced :)  
+3. to build the project locally, execute in order:  
+```
+npm install
+npm run build  
+npm run vitest  
+npm run setup
+```
+   
+The last command will start the ingestion of documents from the CSV into the db. Once completed (the operation lasts approx 4 mins), the database is persisted in `./comuni.msp`  
+   
+   4. now you can run a local http server and perform full-text searches running `npm run start`  
+   
+   5. WARNING! `CORS` is deliberately not enforced :)  
 
 ## Samples
 
@@ -138,5 +145,4 @@ If you search a city by its name, using the param `DENOMINAZIONE_IT` for example
 - implementation of a performance test  
 - add details about CF algorithm  
 - use remote csv file while ingesting, fallback to local if it fails
-- unit test (find the _right_ lib)
 - add CI/CD (and hopefully a free hosting service)
