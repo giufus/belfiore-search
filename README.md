@@ -20,9 +20,10 @@ Every Italian citizen has a unique ID, called FISCAL CODE. It is often used for 
 Every city in Italy has its code and you can get the updated list at this [url](https://www.anagrafenazionale.interno.it/wp-content/uploads/ANPR_archivio_comuni.csv). As a user, you can easily remember the name of the city where you were born, but not the code. This API is for instant real-time search and retrieval of the _Belfiore_ code (even if you get much more, as the entire archive of cities of Italy is ingested), starting from substrings of a city name, province, etc. 
 
 The project uses:  
-- node.js
-- [orama](https://oramasearch.com/)
-- [csv](https://www.npmjs.com/package/csv)
+- [node.js](https://nodejs.org/en) server environment  
+- [typescript](https://www.typescriptlang.org/) programming language  
+- [orama](https://oramasearch.com/) db and search engine  
+- [csv](https://www.npmjs.com/package/csv) CSV parsing  
 
 ## Setup of the project  
 1. I like to use [nodeenv](https://github.com/ekalinin/nodeenv) to manage my node.js projects, so:
