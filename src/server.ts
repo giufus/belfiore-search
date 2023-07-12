@@ -1,7 +1,7 @@
 import http from "http";
 import { restoreDb } from "./restoredb.js";
 import { desc, searchDoc } from './search.js';
-import { COMUNE_PROPS } from "./commons.js";
+import { COMUNE_PROPS, ORAMA_PARAMS } from "./commons.js";
 
 
 // restore DB from file
@@ -18,7 +18,8 @@ const errorResponse = (err: any, res: any, contentType: any) => {
 }
 
 const validateParams = (params: URLSearchParams): boolean => {
-    return Array.from(params.keys()).every(item => COMUNE_PROPS.includes(item))
+    return Array.from(params.keys())
+        .every(item => COMUNE_PROPS.includes(item) || ORAMA_PARAMS.includes(item))
 }
 
 // cors template

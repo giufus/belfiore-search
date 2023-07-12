@@ -21,8 +21,10 @@ export const COMUNE_PROPS = [
     "SIGLAPROVINCIA",
     "FONTE",
     "DATAULTIMOAGG",
-    "COD_DENOM"
+    "COD_DENOM",
 ]
+
+export const ORAMA_PARAMS = ["limit", "offset",]
 
 //TODO: find a way to map the above list to this type  
 export type Comune = {

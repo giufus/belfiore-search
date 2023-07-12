@@ -49,7 +49,7 @@ describe('search tests', () => {
 
     it('search a city OK', async () => {
 
-        const params = new URL('http://localhost:3000?DENOMINAZIONE_IT=ARICC&SIGLAPROVINCIA=RM').searchParams
+        const params = new URL('http://localhost:3000?DENOMINAZIONE_IT=ARICC&SIGLAPROVINCIA=RM&limit=1').searchParams
         const db = Promise.resolve({}) as Promise<Orama<Schema>>;
         // same as const db2 = new Promise((resolve, reject) => resolve({} as Orama<Schema>) );
 
