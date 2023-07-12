@@ -76,7 +76,7 @@ The last command will start the ingestion of documents from the CSV into the db.
 }
 ```
 
-### GET `http://localhost:3000?DENOMINAZIONE_IT=ARICC&SIGLAPROVINCIA=RM`  
+### GET `http://localhost:3000?DENOMINAZIONE_IT=ARICC&SIGLAPROVINCIA=RM&limit=5&offset=2`  
 ```json
 {
   "elapsed": {
@@ -113,7 +113,9 @@ The last command will start the ingestion of documents from the CSV into the db.
   ],
   "count": 401
 }
-```
+```  
+
+- `limit` and `offset` params come from Orama and are used to achieve pagination  
 
 ## A curiosity
 If you search a city by its name, using the param `DENOMINAZIONE_IT` for example, you may obtain an _"historycal view of the city"_, as can exist similar documents with different intervals, in the past:  
