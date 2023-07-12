@@ -23,8 +23,8 @@ describe('search tests', () => {
                     "score": 11.116959146913565,
                     "document": {
                         "ID": "17567",
-                        "DATAISTITUZIONE": "1871-01-15",
-                        "DATACESSAZIONE": "1935-03-06",
+                        "DATAISTITUZIONE": "1920-01-15",
+                        "DATACESSAZIONE": "9999-03-06",
                         "CODISTAT": "058009",
                         "CODCATASTALE": "A401",
                         "DENOMINAZIONE_IT": "ARICCIA",

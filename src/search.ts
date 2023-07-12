@@ -1,4 +1,4 @@
-import { Orama, Result, Results, Schema, search } from '@orama/orama';
+import { Orama, Result, Results, Schema, search, SortByParams } from '@orama/orama';
 import { URLSearchParams } from 'url';
 import { interval, timeString, COMUNE_PROPS } from './commons.js';
 
@@ -13,20 +13,25 @@ export const searchDoc = async (schema: Promise<Orama<Schema>>, searchParams?: U
     let term = Array.from(searchParams?.values() || []).join(' ')
     let properties = Array.from(searchParams?.keys() || [])
         .filter(it => COMUNE_PROPS.includes(it))
-        
+
     let limit = 10;
     let offset = 0;
-    try{
-        limit = parseInt(searchParams?.get('limit')|| '10') 
+    try {
+        limit = parseInt(searchParams?.get('limit') || '10')
         offset = parseInt(searchParams?.get('offset') || '0')
     } catch {
-        Promise.reject({"message": "limit / offset must be int numbers"})
+        Promise.reject({ "message": "limit / offset must be int numbers" })
     }
+
+    const sortBy = {
+        property: "DATACESSAZIONE",
+        order: "DESC",
+    } as SortByParams
 
     console.log(`Searching comuni...`)
 
-    const db = await schema; 
-    const searchResult = await search(db, { term, properties, limit, offset })
+    const db = await schema;
+    const searchResult = await search(db, { term, properties, limit, offset, sortBy })
 
     console.log(`Responding after ${interval(start, new Date())}`)
 

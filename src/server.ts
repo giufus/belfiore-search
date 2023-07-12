@@ -52,7 +52,7 @@ export const server = http.createServer(async (req, res) => {
         res.writeHead(200, contentTypeJson);
         res.end(
             JSON.stringify({
-                message: 'You need to pass 1..N of the following params',
+                message: `You need to pass 1..N of the following params. Optionally "limit" (default is 10) and "offset" (default is 0)`,
                 params: description,
             }, null, 2)
         );
