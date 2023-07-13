@@ -115,7 +115,7 @@ The last command will start the ingestion of documents from the CSV into the db.
 }
 ```  
 
-- `limit` and `offset` params come from Orama and are used to achieve pagination  
+- `limit` and `offset` params come from Orama and are used to achieve the pagination of results. The default values if they are not passed are 10 and 0 respectively.
 
 ## A curiosity
 If you search a city by its name, using the param `DENOMINAZIONE_IT` for example, you may obtain an _"historycal view of the city"_, as can exist similar documents with different intervals, in the past:  
@@ -136,11 +136,14 @@ If you search a city by its name, using the param `DENOMINAZIONE_IT` for example
 
 ## Dockerizing
 
-### Build image  
-`docker build . -t belfiore-search-docker`  
+### Build image (multiplatform linux)  
+`docker buildx build --platform=linux/amd64,linux/arm64 . -t giufus/belfiore-search-docker`  
+
+### Build image (local)  
+`docker build . -t giufus/belfiore-search-docker`  
 
 ### Run container  
-`docker run -p 3000:3000 -d belfiore-search-docker:latest`  
+`docker run -p 3000:3000 -d giufus/belfiore-search-docker`  
 
 
 
