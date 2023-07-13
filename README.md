@@ -137,13 +137,13 @@ If you search a city by its name, using the param `DENOMINAZIONE_IT` for example
 ## Dockerizing
 
 ### Build image (multiplatform linux)  
-`docker buildx build --platform=linux/amd64,linux/arm64 . -t giufus/belfiore-search-docker`  
+`docker buildx build --platform=linux/amd64,linux/arm64 . -t giufus/belfiore-search`  
 
 ### Build image (local)  
-`docker build . -t giufus/belfiore-search-docker`  
+`docker build . -t giufus/belfiore-search`  
 
 ### Run container  
-`docker run -p 3000:3000 -d giufus/belfiore-search-docker`  
+`docker run -p 3000:3000 -d giufus/belfiore-search`  
 
 
 
