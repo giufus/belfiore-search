@@ -134,10 +134,15 @@ If you search a city by its name, using the param `DENOMINAZIONE_IT` for example
 ...  
 ```
 
-## Dockerizing
+## Dockerizing  
+
+You will find the latest docker image at the [Docker Hub 🐳 ](https://hub.docker.com/r/giufus/belfiore-search). If you want to build it locally, you can run:  
 
 ### Build image (multiplatform linux)  
 `docker buildx build --platform=linux/amd64,linux/arm64 . -t giufus/belfiore-search`  
+
+#### _⚠ WARNING: a note for me_  
+No output specified with docker-container driver. Build result will only remain in the build cache. To push result image into registry use `--push` or to load image into docker use `--load`.
 
 ### Build image (local)  
 `docker build . -t giufus/belfiore-search`  
