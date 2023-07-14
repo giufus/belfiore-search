@@ -10,10 +10,12 @@ export const searchDoc = async (schema: Promise<Orama<Schema>>, searchParams?: U
 
     console.log(`Started @ ${timeString(start)}`)
 
-    let term = Array.from(searchParams?.values() || []).join(' ')
-    let properties = Array.from(searchParams?.keys() || [])
-        .filter(it => COMUNE_PROPS.includes(it))
+    // search params
+    const city = searchParams?.get('DENOMINAZIONE_IT') || ''
+    const province = searchParams?.get('SIGLAPROVINCIA') || ''
+    let termPropsAndFilter = getTermPropsAndFilter(city, province)
 
+    // pagination
     let limit = 10;
     let offset = 0;
     try {
@@ -23,6 +25,7 @@ export const searchDoc = async (schema: Promise<Orama<Schema>>, searchParams?: U
         Promise.reject({ "message": "limit / offset must be int numbers" })
     }
 
+    // sorting by 
     const sortBy = {
         property: "DATACESSAZIONE",
         order: "DESC",
@@ -31,13 +34,43 @@ export const searchDoc = async (schema: Promise<Orama<Schema>>, searchParams?: U
     console.log(`Searching comuni...`)
 
     const db = await schema;
-    const searchResult = await search(db, { term, properties, limit, offset, sortBy })
+    const query = { 
+        term: termPropsAndFilter[0], 
+        properties: termPropsAndFilter[1]|| [], 
+        where: termPropsAndFilter[2] || null,
+        limit, 
+        offset, 
+        sortBy 
+    }
+
+    console.log('query is ', query)
+
+    const searchResult = await search(db, query);
 
     console.log(`Responding after ${interval(start, new Date())}`)
 
     return searchResult;
 };
 
+const getTermPropsAndFilter = (city: string, prov: string) => {
+    let term: string = ''
+    let props: string[] = [];
+    let filter: any = {};
+    if (city) {
+        term = city
+        props = ['DENOMINAZIONE_IT']
+        if (prov) {
+            filter = { 'SIGLAPROVINCIA': prov} 
+        }
+    } else if (prov) {
+        term = prov
+        props = ['SIGLAPROVINCIA']
+    } else {
+        console.log('you shall not be here')
+    }
+
+    return [term, props, filter]
+}
 
 // desc schema hitting 1st doc
 export const desc = async (schema: Promise<Orama<Schema>>): Promise<string[]> => {

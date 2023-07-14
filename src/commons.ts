@@ -3,6 +3,8 @@ export const ARCHIVE_CSV: String = 'https://www.anagrafenazionale.interno.it/wp-
 export const CSV_FILE_NAME = 'ANPR_archivio_comuni.csv'
 export const DB_PATH = './comuni.msp'
 
+export const SEARCH_FILTER = ['DENOMINAZIONE_IT', 'SIGLAPROVINCIA']
+
 export const COMUNE_PROPS = [
     "ID",
     "DATAISTITUZIONE",

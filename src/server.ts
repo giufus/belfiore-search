@@ -1,7 +1,7 @@
 import http from "http";
 import { restoreDb } from "./restoredb.js";
-import { desc, searchDoc } from './search.js';
-import { COMUNE_PROPS, ORAMA_PARAMS } from "./commons.js";
+import { searchDoc } from './search.js';
+import { ORAMA_PARAMS, SEARCH_FILTER } from "./commons.js";
 
 
 // restore DB from file
@@ -19,7 +19,7 @@ const errorResponse = (err: any, res: any, contentType: any) => {
 
 const validateParams = (params: URLSearchParams): boolean => {
     return Array.from(params.keys())
-        .every(item => COMUNE_PROPS.includes(item) || ORAMA_PARAMS.includes(item))
+        .every(item => SEARCH_FILTER.includes(item) || ORAMA_PARAMS.includes(item))
 }
 
 // cors template
@@ -48,12 +48,12 @@ export const server = http.createServer(async (req, res) => {
                 );
             
     } else {
-        let description = await desc(db)
         res.writeHead(200, contentTypeJson);
         res.end(
             JSON.stringify({
-                message: `You need to pass 1..N of the following params. Optionally "limit" (default is 10) and "offset" (default is 0)`,
-                params: description,
+                message: `You search with the following params. If you pass both of them, the second is used as a filter on the results`,
+                extra: ` Optional params 'limit' (default is 10) and 'offset' (default is 0)`, 
+                params: SEARCH_FILTER,
             }, null, 2)
         );
     }

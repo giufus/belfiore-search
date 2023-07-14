@@ -52,43 +52,52 @@ The last command will start the ingestion of documents from the CSV into the db.
 ### GET `http://localhost:3000/`  
 ```json
 {
-  "message": "You need to pass 1..N of the following params",
+  "message": "You search with the following params. If you pass both of them, the second is used as a filter on the results",
+  "extra": " Optional params 'limit' (default is 10) and 'offset' (default is 0)",
   "params": [
-    "ID",
-    "DATAISTITUZIONE",
-    "DATACESSAZIONE",
-    "CODISTAT",
-    "CODCATASTALE",
     "DENOMINAZIONE_IT",
-    "DENOMTRASLITTERATA",
-    "ALTRADENOMINAZIONE",
-    "ALTRADENOMTRASLITTERATA",
-    "ID_PROVINCIA",
-    "IDPROVINCIAISTAT",
-    "IDREGIONE",
-    "IDPREFETTURA",
-    "STATO",
-    "SIGLAPROVINCIA",
-    "FONTE",
-    "DATAULTIMOAGG",
-    "COD_DENOM"
+    "SIGLAPROVINCIA"
   ]
 }
 ```
 
-### GET `http://localhost:3000?DENOMINAZIONE_IT=ARICC&SIGLAPROVINCIA=RM&limit=5&offset=2`  
+### GET `http://localhost:3000/?DENOMINAZIONE_IT=ARICC&SIGLAPROVINCIA=RM`  
 ```json
 {
   "elapsed": {
-    "raw": 8545459,
-    "formatted": "8ms"
+    "raw": 3515375,
+    "formatted": "3ms"
   },
   "hits": [
     {
-      "id": "30581029-5371",
-      "score": 11.116959146913565,
+      "id": "37899817-5378",
+      "score": 5.860792320596953,
       "document": {
-        "ID": "17567",
+        "﻿ID": "438",
+        "DATAISTITUZIONE": "1935-03-07",
+        "DATACESSAZIONE": "9999-12-31",
+        "CODISTAT": "058009",
+        "CODCATASTALE": "A401",
+        "DENOMINAZIONE_IT": "ARICCIA",
+        "DENOMTRASLITTERATA": "ARICCIA",
+        "ALTRADENOMINAZIONE": "",
+        "ALTRADENOMTRASLITTERATA": "",
+        "ID_PROVINCIA": "58",
+        "IDPROVINCIAISTAT": "058",
+        "IDREGIONE": "12",
+        "IDPREFETTURA": "RM",
+        "STATO": "A",
+        "SIGLAPROVINCIA": "RM",
+        "FONTE": "",
+        "DATAULTIMOAGG": "2016-06-17",
+        "COD_DENOM": ""
+      }
+    },
+    {
+      "id": "37899817-5371",
+      "score": 5.860792320596953,
+      "document": {
+        "﻿ID": "17567",
         "DATAISTITUZIONE": "1871-01-15",
         "DATACESSAZIONE": "1935-03-06",
         "CODISTAT": "058009",
@@ -107,11 +116,9 @@ The last command will start the ingestion of documents from the CSV into the db.
         "DATAULTIMOAGG": "2016-06-17",
         "COD_DENOM": ""
       }
-    },
-    ...
-    ...
+    }
   ],
-  "count": 401
+  "count": 2
 }
 ```  
 
@@ -133,6 +140,8 @@ If you search a city by its name, using the param `DENOMINAZIONE_IT` for example
   "DATACESSAZIONE": "9999-12-31", 
 ...  
 ```
+  
+Results are DESC sorted by `DATACESSAZIONE`.
 
 ## Dockerizing  
 

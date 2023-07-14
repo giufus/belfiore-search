@@ -59,7 +59,14 @@ describe('search tests', () => {
         expect(result.hits).toHaveLength(1)
         expect(result.hits[0].document.CODCATASTALE).toStrictEqual("A401")
         expect(search).toHaveBeenCalledOnce()
-        expect(search).toHaveBeenCalledWith(await db, {term: expect.anything(), properties: expect.anything()})
+        expect(search).toHaveBeenCalledWith(await db, {
+            term: expect.anything(), 
+            properties: expect.anything(),
+            where: expect.anything(),
+            limit: expect.anything(), 
+            offset: expect.anything(), 
+            sortBy: expect.anything(), 
+        })
     })
 
 });
