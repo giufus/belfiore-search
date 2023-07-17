@@ -168,5 +168,4 @@ No output specified with docker-container driver. Build result will only remain 
 ## To do
 - implementation of a performance test  
 - add details about CF algorithm  
-- use remote csv file while ingesting, fallback to local if it fails
 - add CI/CD (and hopefully a free hosting service)

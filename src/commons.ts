@@ -1,5 +1,5 @@
 
-export const ARCHIVE_CSV: String = 'https://www.anagrafenazionale.interno.it/wp-content/uploads/ANPR_archivio_comuni.csv'
+export const ARCHIVE_CSV = 'https://www.anagrafenazionale.interno.it/wp-content/uploads/ANPR_archivio_comuni.csv'
 export const CSV_FILE_NAME = 'ANPR_archivio_comuni.csv'
 export const DB_PATH = './comuni.msp'
 

@@ -10,6 +10,7 @@
     "@orama/orama": "^1.0.8",
     "@orama/plugin-data-persistence": "^1.0.8",
     "csv": "^6.3.1",
+    "node-fetch": "^3.3.1",
     "ts-node": "^10.9.1"
   },
   "type": "module",
@@ -17,6 +18,7 @@
     "build": "npx tsc -p .",
     "vitest": "npx vitest --run",
     "setup": "node dist/setup.js",
-    "start": "node dist/server.js"
+    "start": "node dist/server.js",
+    "restart": "node dist/setup.js && node dist/server.js"
   }
 }

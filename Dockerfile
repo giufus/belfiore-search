@@ -14,4 +14,4 @@ RUN npm run build
 RUN npm run vitest
 RUN npm run setup
 
-CMD [ "npm", "run", "start" ]
+CMD [ "npm", "run", "restart" ]
