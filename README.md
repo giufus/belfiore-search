@@ -124,7 +124,11 @@ The last command will start the ingestion of documents from the CSV into the db.
 
 - `limit` and `offset` params come from Orama and are used to achieve the pagination of results. The default values if they are not passed are 10 and 0 respectively.
 
-## A curiosity
+## Info about the dataset  
+[Meaning of the fields](https://www.anagrafenazionale.interno.it/wp-content/uploads/2022/10/Legenda-ANPR-archivio-comuni.txt), in italian.
+
+
+### A curiosity
 If you search a city by its name, using the param `DENOMINAZIONE_IT` for example, you may obtain an _"historycal view of the city"_, as can exist similar documents with different intervals, in the past:  
 
 ```json  
