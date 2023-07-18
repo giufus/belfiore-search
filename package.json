@@ -7,8 +7,8 @@
     "vitest": "^0.33.0"
   },
   "dependencies": {
-    "@orama/orama": "^1.0.8",
-    "@orama/plugin-data-persistence": "^1.0.8",
+    "@orama/orama": "^1.0.10",
+    "@orama/plugin-data-persistence": "^1.0.10",
     "csv": "^6.3.1",
     "node-fetch": "^3.3.1",
     "ts-node": "^10.9.1"

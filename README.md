@@ -41,11 +41,11 @@ npm run vitest
 npm run setup
 ```
    
-The last command will start the ingestion of documents from the CSV into the db. Once completed (the operation lasts approx 4 mins), the database is persisted in `./comuni.msp`  
+The last command will start the ingestion of documents from the CSV into the db. Once completed (the operation lasts approx 2 secs after updating Orama to the latest version), the database is persisted in `./comuni.msp`  
    
-   4. now you can run a local http server and perform full-text searches running `npm run start`  (or `npm run restart` as preferred way as it executes some checks on the latest release of the original dataset)  
+   1. now you can run a local http server and perform full-text searches running `npm run start`  (or `npm run restart` as preferred way as it executes some checks on the latest release of the original dataset)  
    
-   6. **WARNING!** `CORS` is deliberately not enforced :)  
+   2. **WARNING!** `CORS` is deliberately not enforced :)  
 
 ## Samples
 
